@@ -1,0 +1,130 @@
+.book__bg {
+    width: 100%;
+    background-image: linear-gradient(105deg, rgba($color-white, .9) 50%, transparent 50%), url(../img/nat-10.jpg);
+    background-size: cover;
+    box-shadow: 0 2rem 4rem rgba($color-black, .2);
+    border-radius: 3px;
+    overflow: hidden;
+
+    @include respond(tab-port) {
+        background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 100%), url(../img/nat-10.jpg);
+    }
+}
+
+.book__application {
+    width: 50%;
+    padding: 6rem;
+
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+    }
+}
+
+.book__form {
+
+    &-group {
+        &:not(:last-child) {
+            margin-bottom: 3rem;
+        }
+    }
+
+
+    &-input {
+        display: block;
+        width: 90%;
+        border: none;
+        padding: 1.7rem 2rem;
+        font-family: inherit;
+        color: inherit;
+        border-bottom: 3px solid transparent;
+
+        @include respond(tab-port) {
+            width: 100%;
+        }
+
+
+        &::-webkit-input-placeholder {
+            color: rgba($color-dark-grey, .7);
+            font-family: inherit;
+            font-size: 1.5rem;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0rem 1rem 1rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary-dark;
+
+            &:invalid {
+                border-bottom: 3px solid $color-orange-dark;
+            }
+        }
+    }
+
+    &-label {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: .8rem;
+        margin-left: 2rem;
+        display: block;
+        transition: .3s;
+    }
+
+    &-input:placeholder-shown+&-label {
+        opacity: 0;
+        transform: translateY(-4rem);
+    }
+
+    .book__option {
+        width: 100%;
+    }
+
+    .book__radio {
+        display: inline-block;
+        width: 48%;
+
+        @include respond(phone) {
+            width: 100%;
+            margin-bottom: 2.5rem;
+        }
+
+        &-input {
+            display: none;
+        }
+
+        &-label {
+            font-size: 1.6rem;
+            position: relative;
+            padding-left: 3.3rem;
+
+            &-span {
+                width: 2.7rem;
+                height: 2.7rem;
+                border: 5px solid $color-primary;
+                border-radius: 50%;
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: -.2rem;
+
+                &::after {
+                    content: '';
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    border-radius: 50%;
+                    border: 3px solid $color-primary;
+                    background-color: $color-primary;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    opacity: 0;
+                }
+            }
+        }
+
+        &-input:checked+.book__radio-label .book__radio-label-span::after {
+            opacity: 1;
+        }
+    }
+}

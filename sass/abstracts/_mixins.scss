@@ -1,0 +1,52 @@
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+/*MEDIA QUERY
+
+Phone - max-width 600px
+Tablet portrait - max-width 900px
+Tablet landscape - max-width 1200px
+1200-1800 - no changes needed
+Big desktop min-width 1800px
+
+! we cannot change the default font-size, so 1em = 16px !
+
+*/
+
+//600px
+//900px
+//1200px
+//1800px
+
+//Order: Base + typography > general layout + grid > page layout > components
+
+@mixin respond($device) {
+    @if $device ==phone {
+        @media (max-width:37.5em) {
+            @content
+        }
+    }
+
+    @if $device ==tab-port {
+        @media (max-width:56.25em) {
+            @content
+        }
+    }
+
+    @if $device==tab-land {
+        @media (max-width:75em) {
+            @content
+        }
+    }
+
+    @if $device==big-desktop {
+        @media (min-width:112.5em) {
+            @content
+        }
+    }
+}

@@ -1,0 +1,192 @@
+.card {
+    perspective: 150rem;
+    position: relative;
+    height: 50rem;
+
+
+    &__side {
+        height: 50rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        width: 100%;
+        transition: all 1s;
+        border-radius: 3px;
+        box-shadow: 0 .5rem 2rem .5rem rgba($color-black, .1);
+
+        &--front {
+            background-color: white;
+        }
+
+        &--back {
+            transform: rotateY(180deg);
+
+            &--1 {
+                background-image: linear-gradient(to right bottom, rgba($color-orange-light, .8), rgba($color-orange-dark, .8));
+            }
+
+            &--2 {
+                background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+            }
+
+            &--3 {
+                background-image: linear-gradient(to right bottom, rgba($color-blue-light, .85), rgba($color-blue-dark, .85));
+            }
+
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0deg);
+    }
+
+    &__image {
+        background-blend-mode: screen;
+        height: 23rem;
+        background-size: cover;
+        background-position: top;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-orange-light, .85), rgba($color-orange-dark, .85)), url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85)), url(../img/nat-6.jpg);
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-blue-light, .85), rgba($color-blue-dark, .85)), url(../img/nat-7.jpg);
+        }
+
+    }
+
+    //FRONT
+
+    &__heading {
+        color: white;
+        font-size: 2.8rem;
+        text-transform: uppercase;
+        font-weight: 300;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        text-align: right;
+        width: 70%;
+    }
+
+    &__heading-span {
+        padding: 1rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-orange-light, .85), rgba($color-orange-dark, .85));
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85))
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-blue-light, .85), rgba($color-blue-dark, .85))
+        }
+    }
+
+
+    &__details {
+        ul {
+            list-style: none;
+            width: 70%;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        li {
+            padding: 1rem;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid #eee;
+            }
+        }
+    }
+
+
+    //BACK
+
+    &__price {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+
+        &-paragraph {
+            font-size: 1.5rem;
+        }
+
+        &-heading {
+            font-size: 6rem;
+            font-weight: 100;
+            margin-bottom: 8rem;
+        }
+    }
+
+    @media (max-width:56.25em),
+    (hover:none) {
+        height: auto;
+        background-color: white;
+        box-shadow: 0 .5rem 2rem .5rem rgba($color-black, .1);
+
+
+        &__side {
+            height: auto;
+            position: relative;
+            box-shadow: none;
+
+            &--back {
+                transform: rotateY(0deg);
+                clip-path: polygon(0% 20%, 100% 0%, 100% 100%, 0% 100%);
+            }
+        }
+
+        &:hover &__side--front {
+            transform: rotateY(0deg);
+        }
+
+        &:hover &__side--back {
+            transform: rotateY(0deg);
+        }
+
+        //BACK
+
+        &__price {
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: translate(0);
+            padding: 10rem 0 5rem 0;
+
+            &-paragraph {
+                font-size: 1.5rem;
+            }
+
+            &-heading {
+                font-size: 5rem;
+                margin-bottom: 3rem;
+            }
+        }
+
+    }
+}

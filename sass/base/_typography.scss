@@ -1,0 +1,77 @@
+body {
+    font-family: 'Lato';
+    line-height: 1.7;
+    color: $color-dark-grey;
+}
+
+.primary-text {
+    color: #fff;
+
+    &--main {
+        display: block;
+        font-size: 6rem;
+        letter-spacing: 3.5rem;
+        font-weight: 400;
+        animation: moveinleft .7s;
+        animation-fill-mode: backwards;
+
+        @include respond(phone) {
+            letter-spacing: 1rem;
+        }
+    }
+
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        letter-spacing: 1.7rem;
+        margin-bottom: 6rem;
+        animation: moveinright .7s;
+        animation-fill-mode: backwards;
+
+        @include respond(phone) {
+            letter-spacing: .5rem;
+        }
+    }
+
+}
+
+.secondary-text--main {
+    display: inline-block;
+    font-size: 3.5rem;
+    background-image: linear-gradient(to right, rgba($color-primary-light, 1), rgba($color-primary-dark, 1));
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: all .2s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    @include respond(phone) {
+        font-size: 2.5rem;
+    }
+
+    &:hover {
+        transform: skewY(2deg) skewX(10deg) scale(1.1);
+        text-shadow: 0 1rem 2rem rgba($color-dark-grey, .4);
+    }
+}
+
+.heading-tertiary {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: $color-dark-grey;
+}
+
+.paragraph {
+    font-size: 1.6rem;
+
+    &:not(:last-child) {
+        margin-bottom: 2.5rem;
+    }
+}
+
+.feature-box-icon {
+    font-size: 6rem;
+    background-image: linear-gradient(to right, rgba($color-primary-light, 1), rgba($color-primary-dark, 1));
+    -webkit-background-clip: text;
+    color: transparent;
+}

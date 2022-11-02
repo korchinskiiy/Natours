@@ -1,0 +1,168 @@
+.navigation {
+    &__input {
+        display: none;
+    }
+
+    &__label {
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        right: 5.5rem;
+        top: 5.5rem;
+        z-index: 2000;
+        text-align: center;
+        cursor: pointer;
+
+        @include respond(tab-port) {
+            right: 3rem;
+            top: 3rem;
+        }
+
+        &:hover span::before {
+            top: -.8rem;
+        }
+
+        &:hover span::after {
+            top: .8rem;
+        }
+
+        span {
+            position: relative;
+            top: 2.5rem;
+            left: .7rem;
+
+
+
+            &,
+            &::before,
+            &::after {
+                display: inline-block;
+                height: 1.5px;
+                width: 3rem;
+                background-color: $color-black;
+            }
+
+            &::before,
+            &::after {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+            }
+
+            &::before {
+                top: -1rem;
+                transition: all .2s;
+
+            }
+
+            &::after {
+                top: 1rem;
+                transition: all .2s;
+
+            }
+
+        }
+    }
+
+    &__background {
+        background-image: radial-gradient(circle, $color-primary-light, $color-primary);
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        right: 6rem;
+        top: 6rem;
+        z-index: 1000;
+        transition: transform 1s cubic-bezier(.7, .36, 0, 1);
+
+        @include respond(tab-port) {
+            right: 3.5rem;
+            top: 3.5rem;
+        }
+
+    }
+
+    nav {
+        position: fixed;
+        z-index: 1500;
+        height: 100vh;
+        left: 100%;
+        top: 0;
+        opacity: 0;
+        width: 100%;
+        transition: all 1s cubic-bezier(.66, -0.28, .4, 1.36);
+    }
+
+    span {
+        margin-right: 1.3rem;
+    }
+
+    ul {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+    }
+
+    &__list {
+        margin: 1rem;
+    }
+
+    &__links {
+
+        &:link,
+        &:visited {
+            display: block;
+            text-transform: uppercase;
+            color: $color-white;
+            text-decoration: none;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            background-image: linear-gradient(120deg, transparent 50%, white 50%);
+            background-size: 235%;
+            background-position: 7%;
+            transition: all .3s ease-in-out;
+
+            @include respond(phone) {
+                background-position: 0%;
+            }
+
+        }
+
+        &:hover {
+            background-position: 100%;
+            color: $color-primary;
+            transform: translateX(1rem);
+        }
+    }
+
+    &__input:checked~&__background {
+        transform: scale(80);
+    }
+
+    &__input:checked~nav {
+        opacity: 1;
+        width: 100%;
+        left: 0%;
+    }
+
+    &__input:checked+&__label span {
+        background-color: transparent;
+    }
+
+    &__input:checked+&__label span::before {
+        top: .1rem;
+        transform: rotate(135deg) translateX(0px);
+    }
+
+    &__input:checked+&__label span::after {
+        top: -.1rem;
+        transform: rotate(-135deg) translateX(-1.9px);
+    }
+}
